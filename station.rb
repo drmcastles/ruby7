@@ -27,10 +27,12 @@ class Station
 
 
   def add_train(train)
+    trains_on_station_validate!
     trains << train unless trains.include?(train)
   end
 
   def send_train(train)
+    trains_on_station_validate!
     trains.delete(train) if trains.include?(train)
   end
 
@@ -44,6 +46,7 @@ class Station
 
 
   def trains_list(target)
+    trains_on_station_validate!
     trains.select{ |train| puts "Train: #{train.number}" if train.class == target}
   end
 

@@ -177,7 +177,7 @@ class Main
 
 
   def view_stations
-    @stations.each_with_index { |station, i | puts "#{i + 1}. Station: \"#{station.name}\"" }
+    @stations.each_with_index(1) { |station, i | puts "#{i}. Station: \"#{station.name}\"" }
   rescue RuntimeError => e
     puts e.message
   end
@@ -197,7 +197,7 @@ def view_trains_on_stations
   station_cargo_trains.each_with_index { |ct, i| print "#{i + 1}. Cargo Train: #{ct.number} \n" } if station_passenger_trains
   station_passenger_trains.each_with_index { |pt, i| print "#{i + 1}. Passenger Train: #{pt.number} \n" } if station_passenger_trains
 
-  puts "There is no trains on station: #{current_station.name}." if station_cargo_trains.empty? && station_passenger_trains.empty?
+
   rescue RuntimeError => e
     puts e.message
 end
@@ -347,10 +347,6 @@ end
 
   def routes_validate!
     raise ROUTES_ERROR if routes.empty?
-  end
-
-  def carriages_validate!(train)
-    raise NO_CARRIAGES_ERROR if train.carriages.empty?
   end
 end
 

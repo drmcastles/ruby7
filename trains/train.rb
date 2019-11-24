@@ -47,17 +47,13 @@ class Train
   end
 
   def add_carriage(carriage)
-    stop
+    add_carriage_validate!(carriage)
     carriages << carriage
   end
 
   def delete_carriage
-    if carriages.size > 0
-      stop
-      carriages.delete(carriages.last)
-    else
-      p "Number of carriges is 0!"
-    end
+    delete_carriage_validate!(carriage)
+    carriages.delete(carriages.last)
   end
 
   def add_route=(route)
