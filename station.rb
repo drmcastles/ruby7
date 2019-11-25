@@ -47,7 +47,7 @@ class Station
 
   def trains_list(target)
     trains_on_station_validate!
-    trains.select{ |train| puts "Train: #{train.number}" if train.class == target}
+    trains.select{ |train| return train.number if train.class == target}
   end
 
   def valid?
